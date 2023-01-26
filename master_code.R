@@ -21,18 +21,10 @@ library(picante)
 library(randomForest)
 
 # Load Alien
-install.packages("remotes")
-remotes::install_github("TheoreticalEcosystemEcology/alien")
+#install.packages("remotes")
+#remotes::install_github("TheoreticalEcosystemEcology/alien")
 library(alien)
 
-
-# Load data
-data(salixGal)
-data(galPara)
-
-# And extract interaction matrices
-gp_mat <- galPara$adjMat
-sg_mat <- salixGal$adjMat
 
 # Load scripts
 setwd("/home/kate/Documents/PhDprojects/galler-traits")
@@ -42,6 +34,25 @@ source("submission_202105/code/fig_funcs2.R")
 source("submission_202105/code/plot_intdist_phylodist.R")
 source("submission_202105/code/sample_webs_funcs.R")
 source("submission_202105/code/run_trait_combinations.R")
+source("code/R.code/trim_traits.R")
+
+
+#####################################################
+## Get data
+#####################################################
+
+# Load data
+data(salixGal)
+data(galPara)
+
+# Clean traits to remove correlated or unuseful traits
+salixGal <- trimTraits(salixGal)
+galPara  <- trimTraits(galPara)
+
+# And extract interaction matrices
+gp_mat <- galPara$adjMat
+sg_mat <- salixGal$adjMat
+
 
 #################################################
 ## Run analyses
