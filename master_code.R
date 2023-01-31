@@ -35,6 +35,7 @@ source("submission_202105/code/plot_intdist_phylodist.R")
 source("submission_202105/code/sample_webs_funcs.R")
 source("submission_202105/code/run_trait_combinations.R")
 source("code/R.code/trim_traits.R")
+source("code/R.code/train_test.R")
 
 
 #####################################################
