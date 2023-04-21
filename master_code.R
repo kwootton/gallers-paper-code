@@ -65,6 +65,8 @@ models_gp <- list()
 
 #### Salix-galler ####
 
+## Set up test-training data sets
+
 ## KNN methods (will output warnings because not all species have 3 neighbours)
 models_sg[["KNN"]] <- fitKNN(salixGal,
                            distFrom = "jaccard",
