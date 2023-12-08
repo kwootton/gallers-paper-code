@@ -21,7 +21,8 @@ Contains functions used to compare model predictions.
  Contains functions to make interaction matrices figures showing model predictions.
   - `compare_predictions_fig` makes the figure
   - `melt_prb` turns the model prediction matrix into an edge list
-  ` `im2el` converts an incidence (adjacency) matrix into an edge list
+  - `im2el` converts an incidence (adjacency) matrix into an edge list
+  - `make_sp_names_table` outputs a latex table with the species names in the order they appear in the figure. Gallers are grouped by gall type
   
 ## plot_intdist_phylodist.R
 Contains functions to calculate and plot the correlation of a community's phylogenetic, interaction, and trait dissimilarities/distances.
@@ -29,19 +30,13 @@ Contains functions to calculate and plot the correlation of a community's phylog
   - `calc_dist_traits` calculates distances between species based on traits
   - `compare_distances` calculate (and plot) correlation between species' interaction, trait, and phylogenetic distances
   
-## sample_web_funcs.R
-Contains functions needed to sample interactions and create networks based on model predictions.
-  - `sample_1_network` uses the model predictions to stochastically sample interactions from the community to create a potential network
-  - `sample_many_networks` runs `sample_1_network` n times to get n possible networks based on the model prediction
-  - `calc_modularity` calculates modularity of networks
-  - `calc_correct1s` calculates the number of correctly predicted interactions
-  - `calc_correct0s` calculates the number of non interactions that were correctly predicted
-  - `calc_metrics_sampled_nw` calculates metrics (eg modularlity) on each sampled network
-  - `calc_metrics_observed_nw` calculates the same metrics on the real network
-  - `set_non_cooccur_to_0` ensures that species that don't co-occur have a value of zero (because they can't interact)
-
 ## run_trait_combinations.R
 Contains functions to run each model that uses traits (KNN, GLM, 4th Corner, RF) with all combination of n traits
   - `run_trait_combinations` runs each model with each combination of n traits
   - `scaleFUN` scales numbers to 2 decimal places (for plotting)
   - `plot_ntrait_fits` plots the fits of each model with different traits as a box plot faceted by model
+
+  ## trim_traits.R
+  Contains functions to remove correlated or un-useful traits
+   - `trimTraits` removes traits that are correlated or just not that useful. See supplementary material for description of choices.
+   - `removeTraits` is called by `trimTraits` and actually removes the traits.
